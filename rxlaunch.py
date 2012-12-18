@@ -118,6 +118,13 @@ class NodeController(object):
                 self.gui.spawn_count_label.setText("(%d)" % self.proxy.process.spawn_count)
 
 class NamesSurrogate(object):
+    """
+    Because some functions in roslib.names cannot be referred in the original rxlaunch code, 
+    the codes of those function are copied here. This class should not be used for 
+    any other purpose than to be used within this .py file.
+
+    :author: Isaac Saito
+    """
 
     PRIV_NAME = '~' 
     SEP = '/' 
@@ -212,7 +219,9 @@ class RxlaunchApp(QtGui.QDialog):
 
             node_controller = NodeController(proxy, gui)
             self.node_controllers.append(node_controller)
-            #start_button.clicked.connect(node_controller.start)
+    
+            #TODO(Isaac) These need to be commented in in order to function as originally intended.
+            #start_button.clicked.connect(node_controller.start) 
             #stop_button.clicked.connect(node_controller.stop)
 
             #resolved_node_name = roslib.names.ns_join(proxy.config.namespace, proxy.config.name)
